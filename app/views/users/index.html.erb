@@ -1,11 +1,11 @@
+<div class='container-fluid'>
 <% @user.each do |user| %>
-  <div class='col-md-2'>
-    <div class='thumbnail'>
+  <div class='col-lg-2 col-md-3 col-sm-4 clearfix text-center'>
       <%= gravatar_tag user.email, size: 150 %>
-      <div class='caption text-center'>
+      <div class='caption'>
         <h4><%= user.name %><br>
         <small>@<%= link_to user.username, user_path(user.username) %></small></h4>
       </div>
-    </div>
   </div>
 <% end %>
+</div>
