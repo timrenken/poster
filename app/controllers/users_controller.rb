@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @user = User.all
+    @users = User.paginate(page: params[:page]).order(:username)
   end
   
   private
