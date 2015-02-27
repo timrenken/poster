@@ -1,0 +1,11 @@
+<% @user.each do |user| %>
+  <div class='col-md-2'>
+    <div class='thumbnail'>
+      <%= gravatar_tag user.email, size: 150 %>
+      <div class='caption text-center'>
+        <h4><%= user.name %><br>
+        <small>@<%= link_to user.username, user_path(user.username) %></small></h4>
+      </div>
+    </div>
+  </div>
+<% end %>
