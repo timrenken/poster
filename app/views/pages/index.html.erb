@@ -1,7 +1,39 @@
 <div class='container'>
+  <% if user_signed_in? %>
+    <div class='row'>
+      <aside class='col-md-4'>
+        <div class='thumbnail'>
+          <div class='row'>
+            <div class='col-md-4 text-right'>
+              <%= gravatar_tag current_user.email, size: 90 %>
+            </div>
+            <div class='col-md-8'>
+              <br><br>
+              <h4><%= current_user.name %><br>
+              <small>@<%= current_user.username %> | <%= link_to "View my profile", user_path(current_user.username) %></small></h4>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'>
+              <p class='text-center'>Posts</p>
+              <p class='text-center'><%= current_user.posts.count %></p>
+            </div>
+            <div class='col-md-4'>
+              <p class='text-center'>Followers</p>
+            </div>
+            <div class='col-md-4'>
+              <p class='text-center'>Following</p>
+            </div>
+          </div>
+        </div>
+        <%= render 'posts/post_form' %>
+      </aside>
+    </div>
+  <% else %>
   <div class='jumbotron text-center'>
     <h1>Tim's Twitter Clone</h1>
     <p>This is the home page of my Twitter clone</p>
     <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary btn-lg" %>
   </div>
+  <% end %>
 </div>

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :users, only: [:show, :index]
+  resources :posts, only: [:create, :destroy]
 end
