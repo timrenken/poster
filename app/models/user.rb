@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   
   validates_presence_of :name
+  
+  def feed
+    Post.where('user_id = ?', id)
+  end
 end
