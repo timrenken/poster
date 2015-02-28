@@ -1,0 +1,11 @@
+<% @user ||= current_user %>
+<div class='row'>
+  <div class='col-md-4 text-right'>
+    <%= gravatar_tag @user.email, size: 90 %>
+  </div>
+  <div class='col-md-8'>
+    <h4><%= @user.name %><small> | <%= @user.username %></small></h4>
+    <%= link_to "View my profile", user_path(@user.username) %><br>
+    <%= @user.posts.count %> Posts
+  </div>
+</div>

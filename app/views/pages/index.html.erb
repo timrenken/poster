@@ -3,30 +3,8 @@
     <div class='row'>
       <aside class='col-md-4'>
         <div class='thumbnail'>
-          <div class='row'>
-            <div class='col-md-4 text-right'>
-              <%= gravatar_tag current_user.email, size: 90 %>
-            </div>
-            <div class='col-md-8'>
-              <br><br>
-              <h4><%= current_user.name %><br>
-              <small>@<%= current_user.username %> | <%= link_to "View my profile", user_path(current_user.username) %></small></h4>
-            </div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>
-              <p class='text-center'>Posts</p>
-              <p class='text-center'><%= current_user.posts.count %></p>
-            </div>
-            <div class='col-md-4'>
-              <p class='text-center'>Followers</p>
-              <p class='text-center'><%= current_user.followers.count %></p>
-            </div>
-            <div class='col-md-4'>
-              <p class='text-center'>Following</p>
-              <p class='text-center'><%= current_user.following.count %></p>
-            </div>
-          </div>
+          <%= render 'shared/user' %>
+          <%= render 'shared/stats' %>
         </div>
         <%= render 'posts/post_form' %>
       </aside>
