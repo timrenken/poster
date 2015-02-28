@@ -6,8 +6,7 @@
         <%= render 'shared/user' %>
         <%= render 'shared/stats' %>
       </div>
-    <section class="stats">
-      
+    <section>
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
@@ -20,9 +19,19 @@
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
+      <% @users.each do |user| %>
+        <div class="row">
+          <div class='col-md-2 text-right'>
+            <%= link_to gravatar_tag(user, size: 70), user_path(user.username) %>
+          </div>
+            
+          <div class='col-md-10'>
+            <h4><%= user.name %><small> | <%= user.username %> | <%= link_to "view profile", user_path(user.username) %></small></h4>
+            <%= user.posts.count %> Posts | <%= user.following.count %> Following | <%= user.followers.count %> Followers
+          </div>
+        </div>
+        <br>
+      <% end %>
       <%= will_paginate %>
     <% end %>
   </div>
